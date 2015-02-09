@@ -18,7 +18,7 @@ patrick.young@digitalglobe.com
 
 - We've progressively been moving many of our R&D activities from commercial tools (MatLab, ENVI/IDL) to Python
 - Enabled by the excellent open source GIS software packages written or wrapped by Python
-- R&D further accelerated by the great open source image processing (opencv, scikit-image, etc) and scientific packages available in Python 
+- R&D further accelerated by the huge number of open source image processing algorithms (opencv, scikit-image, etc) and the scipy stack
 
 * GDAL and OGR
 
@@ -33,6 +33,31 @@ GDAL and OGR ([[http://gdal.org/][gdal.org]]) are foundational C++ libraries for
 * GDAL Examples
 
 Read an Image
+
+.code code/gdal_read.py /START OMIT/,/END OMIT/
+
+* GDAL Examples
+
+Read an Image
+
+    In [1]: im
+    Out[1]: 
+    array([[[ 745,  701,  759, ..., 1109, 1046,  706],
+            [ 769,  711,  774, ..., 1167, 1061,  795],
+            [ 719,  719,  743, ..., 1232, 1185, 1059],
+            ..., 
+            [ 967,  990,  953, ...,  669,  666,  793],
+            [1014,  969, 1011, ...,  637,  677,  709],
+            [1046, 1072, 1059, ...,  603,  664,  680]],
+        
+           [[ 567,  512,  586, ...,  930,  851,  436],
+            [ 597,  522,  601, ...,  971,  859,  539],
+            [ 534,  531,  556, ..., 1052, 1015,  872],
+            ..., 
+            [1212, 1163, 1052, ...,  471,  434,  578],
+            [ 966,  830,  830, ...,  520,  490,  503],
+            [ 869,  822,  755, ...,  511,  493,  474]]], dtype=uint16)
+    	
 
 
  
