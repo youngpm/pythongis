@@ -1,0 +1,38 @@
+Open Source Python GIS Tools
+10 February 2015
+Tags: python gis
+
+Patrick Young
+Research Scientist, DigitalGlobe
+patrick.young@digitalglobe.com
+
+* DigitalGlobe
+
+- Five Earth observing satellites providing foundational imagery that many GIS layers are built on top of
+- We collect millions of square kilometers of high resolution (up to 0.25 m) imagery a day
+- Our archive contains over a billion square kilometers of pixels!
+
+.image images/fuji.jpg _ 600
+
+* Python
+
+- We've progressively been moving many of our R&D activities from commercial tools (MatLab, ENVI/IDL) to Python
+- Enabled by the excellent open source GIS software packages written or wrapped by Python
+- R&D further accelerated by the great open source image processing (opencv, scikit-image, etc) and scientific packages available in Python 
+
+* GDAL and OGR
+
+GDAL and OGR ([[http://gdal.org/][gdal.org]]) are foundational C++ libraries for manipulating geospatial raster and vector data, respectively
+
+- SWIG bindings allow for easy reads and writes of raster data to and from numpy arrays
+- The bindings have a C feel, but are very powerful
+- It helps to be familiar with the C++ API as the docstrings can be lacking
+- Behavior of the bindings can be _surprising_ [[http://trac.osgeo.org/gdal/wiki/PythonGotchas]]
+- The Python GDAL/OGR Cookbook [[http://pcjericks.github.io/py-gdalogr-cookbook/]] is an excellent starting point
+
+* GDAL Examples
+
+Read an Image
+
+
+ 
