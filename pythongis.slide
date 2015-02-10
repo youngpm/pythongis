@@ -34,11 +34,17 @@ GDAL and OGR ([[http://gdal.org/][gdal.org]]) are foundational C++ libraries for
 
 Read an Image
 
-.code code/gdal_read.py /START OMIT/,/END OMIT/
+We input from the osgeo package
+
+.code code/gdal_read.py /START IMPORTS/,/END IMPORTS/
+
+Reading into a numpy array is straightforward,
+
+.code code/gdal_read.py /try:/,/processing/
+
+but be sure to set the dataset to None when done!
 
 * GDAL Examples
-
-Read an Image
 
     In [1]: im
     Out[1]: 
@@ -58,6 +64,50 @@ Read an Image
             [ 966,  830,  830, ...,  520,  490,  503],
             [ 869,  822,  755, ...,  511,  493,  474]]], dtype=uint16)
     	
+* GDAL Examples
+
+Write an Image
+
+A writable dataset can be both read from and written to
+
+.code code/gdal_write.py /processing on im/,/ds_out = None/
+
+Note that the dataset has to exist first before we open it...
+
+* GDAL Examples
+
+Create a Dataset
+
+Often, you'll want to create a new dataset to write to rather than an existing one
 
 
- 
+
+A really useful driver is the "MEM" driver for when you need a temporary GDAL dataset but want to avoid real IO
+
+  dvr = gdal.GetDriverByName("MEM")
+
+* GDAL Examples
+
+The underlying APIs used in most of the [[http://www.gdal.org/gdal_utilities.html][GDAL utilities]] can be accessed via the Python API 
+
+For example, to rasterize a vector file, you could do this
+
+.code code/gdal_rasterize_ex.py /ds_vector/,/options/
+
+* What We are Rasterizing
+
+.image images/roads_vector.png _ 800
+
+* The Result
+
+.image images/roads_rasterized.png _ 800
+
+* OGR
+
+GDAL handles raster data while OGR takes care of vector data.  In the previous example, I used an OGR dataset to rasterize from
+
+.code code/gdal_rasterize_ex.py /ds_vector/,/GetLayer/
+
+I won't cover OGR here as I find reading, writing, and creating vector datasets to be especially clunky and error prone to do directly via those bindings.  However, if you're a GDAL power user, you'll quickly find you'll be needing them!
+
+Fortunately, for most purposes there is a much more satisfying way, enter _Fiona_ and _Shapely_!
