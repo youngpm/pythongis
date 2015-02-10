@@ -183,7 +183,9 @@ Fiona fetches records as a GeoJSON like dictionary:
 
 - This makes your life easy, simply pass the dict around to your own code
 
-All the information on the coordinate system, projection, and shapefile schema are there (crs conforms to how the [[http://trac.osgeo.org/proj/][PROJ.4]] library handles it, check out [[https://github.com/jswhit/pyproj][pyproj]] for a nice wrapper of that library)
+* Fiona
+
+All the information on the coordinate system, projection, and shapefile schema are there (the handling of the cordinate reference system and projection conforms to how the [[http://trac.osgeo.org/proj/][PROJ.4]] library handles it, check out [[https://github.com/jswhit/pyproj][pyproj]] for a nice wrapper of that library)
 
     In [9]: source.meta
     Out[9]:
@@ -199,3 +201,126 @@ All the information on the coordinate system, projection, and shapefile schema a
 .image images/fiona_json_screenshot.png _ 600
 
 .caption JSON file pumped to [[geojson.io]]
+
+* Shapely
+
+[[http://toblerity.org/shapely/manual.html][Shapely]] is a Cython wrapper around [[http://trac.osgeo.org/geos/][GEOS]], a very comprehensive computational geometry library.  It powers the geometry operations in PostGIS.
+
+Fiona and shapley play well together:
+
+.code code/fiona_shapely.py
+
+* Shapely
+
+.image images/shapely_json_screenshot.png _ 800
+
+.caption JSON file pumped to [[geojson.io]]
+
+* Rasterio
+
+[[https://github.com/mapbox/rasterio][Rasterio]] is a Cython wrapper around GDAL.  It cleans up a lot of the gotchas that exist in the GDAL bindings.
+
+    with rasterio.drivers():
+        with rasterio.open('tests/data/RGB.byte.tif') as src:
+            print(src.width, src.height)
+            print(src.crs)
+            print(src.affine)
+            print(src.count)
+            print(src.indexes)
+    
+    # Output:
+    # (791, 718)
+    # {u'units': u'm', u'no_defs': True, u'ellps': u'WGS84', u'proj': u'utm', u'zone': 18}
+    # Affine(300.0379266750948, 0.0, 101985.0,
+    #        0.0, -300.041782729805, 2826915.0)
+    # 3
+    # [1, 2, 3]
+
+.caption From the Rasterio docs
+
+I haven't switched over from using the GDAL bindings yet, but I should.
+
+* Rasterio
+
+The rasterization example we did with the GDAL/OGR bindings would look something like this:
+
+    from rasterio.features import rasterize
+    with fiona.open('../images/roads.shp') as source:
+        unioned_geom = geometry.mapping(ops.unary_union(
+                           [geometry.shape(rec['geometry']) for rec in source]))
+        result = rasterize([unioned_geom], out_shape=(100,100)) # A numpy array on output, nice!
+
+* Powered by Python
+
+One project where we've used python extensively is in constructing seamless, tonally consistant, high resolution mosaics on a country sized scale
+
+- A mosaic is composed of thousands of strips, each strip on the order of 20km x 100km in size at 0.5m resolution
+- We match the tones of all the strips, and create "smart" seamlines at the boundaries
+- Much of this processing is done in Python, and dropping to Cython when neccessary
+
+* Powered by Python
+
+.image images/iran1.png _ 700 
+
+* Powered by Python
+
+.image images/iran2.png _ 550 
+
+* Powered by Python
+
+.image images/iran3.png _ 600 
+
+* Powered by Python
+
+.image images/iran4.png _ 600 
+
+* Powered by Python
+
+.image images/iran5.png _ 600 
+
+* Powered by Python
+
+.image images/permian1.png _ 500 
+
+* Powered by Python
+
+.image images/permian2.png _ 500 
+
+* Powered by Python
+
+.image images/permian4.png _ 700 
+
+* Powered by Python
+
+.image images/permian3.png _ 700 
+
+* Powered by Python
+
+.image images/permian5.png _ 700 
+
+* Powered by Python
+
+.image images/permian6.png _ 700 
+
+* Powered by Python
+
+.image images/permian7.png _ 700 
+
+* Powered by Python
+
+.image images/permian8.png _ 700 
+
+* Resources
+
+The tools avaiable for manipulating GIS data in Python are a real pleasure to use; there are a bunch more I haven't touch on, check out the previously mentioned talks for more pointers!
+
+Of particular note is [[http://www2.qgis.org/en/site/][QGIS]], a desktop application for viewing/manipulating vector and raster data.  It supports extensions via PyQT and is free!
+
+To get at free raster and vector data, check out:
+
+- USGS's [[http://earthexplorer.usgs.gov/][EarthExplorer]], has the entire Landsat archive plus a bunch of arial and satellite data for free
+- [[http://www.openstreetmap.org/][OpenStreetMap]]
+- There are many more sources out there, google away!
+
+
+
