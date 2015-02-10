@@ -198,7 +198,7 @@ All the information on the coordinate system, projection, and shapefile schema a
 
 .code code/fiona_json.py
 
-.image images/fiona_json_screenshot.png _ 600
+.image images/fiona_json_screenshot.PNG _ 600
 
 .caption JSON file pumped to [[geojson.io]]
 
