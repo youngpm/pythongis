@@ -97,7 +97,7 @@ For example, to rasterize a vector file, you could do this
 
 * What We are Rasterizing
 
-.image images/roads_vector.png _ 800
+.image images/roads_vector.png_ 800
 
 * The Result
 
@@ -212,7 +212,7 @@ Fiona and shapley play well together:
 
 * Shapely
 
-.image images/shapely_json_screenshot.png _ 800
+.image images/shapely_json_screenshot.PNG _ 800
 
 .caption JSON file pumped to [[geojson.io]]
 
@@ -260,55 +260,55 @@ One project where we've used python extensively is in constructing seamless, ton
 
 * Powered by Python
 
-.image images/iran1.png _ 700 
+.image images/iran1.PNG _ 700 
 
 * Powered by Python
 
-.image images/iran2.png _ 550 
+.image images/iran2.PNG _ 550 
 
 * Powered by Python
 
-.image images/iran3.png _ 600 
+.image images/iran3.PNG _ 600 
 
 * Powered by Python
 
-.image images/iran4.png _ 600 
+.image images/iran4.PNG _ 600 
 
 * Powered by Python
 
-.image images/iran5.png _ 600 
+.image images/iran5.PNG _ 600 
 
 * Powered by Python
 
-.image images/permian1.png _ 500 
+.image images/permian1.PNG _ 500 
 
 * Powered by Python
 
-.image images/permian2.png _ 500 
+.image images/permian2.PNG _ 500 
 
 * Powered by Python
 
-.image images/permian4.png _ 700 
+.image images/permian4.PNG _ 700 
 
 * Powered by Python
 
-.image images/permian3.png _ 700 
+.image images/permian3.PNG _ 700 
 
 * Powered by Python
 
-.image images/permian5.png _ 700 
+.image images/permian5.PNG _ 700 
 
 * Powered by Python
 
-.image images/permian6.png _ 700 
+.image images/permian6.PNG _ 700 
 
 * Powered by Python
 
-.image images/permian7.png _ 700 
+.image images/permian7.PNG _ 700 
 
 * Powered by Python
 
-.image images/permian8.png _ 700 
+.image images/permian8.PNG _ 700 
 
 * Resources
 
