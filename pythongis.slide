@@ -19,6 +19,7 @@ patrick.young@digitalglobe.com
 - We've progressively been moving many of our R&D activities from commercial tools (MatLab, ENVI/IDL) to Python
 - Enabled by the excellent open source GIS software packages written or wrapped by Python
 - R&D further accelerated by the huge number of open source image processing algorithms (opencv, scikit-image, etc) and the scipy stack
+- This has been a grass roots movement (not dictated from above!)
 
 * GDAL and OGR
 
@@ -108,6 +109,46 @@ GDAL handles raster data while OGR takes care of vector data.  In the previous e
 
 .code code/gdal_rasterize_ex.py /ds_vector/,/GetLayer/
 
-I won't cover OGR here as I find reading, writing, and creating vector datasets to be especially clunky and error prone to do directly via those bindings.  However, if you're a GDAL power user, you'll quickly find you'll be needing them!
+If you're a GDAL power user, you'll quickly find you'll be needing OGR!
 
-Fortunately, for most purposes there is a much more satisfying way, enter _Fiona_ and _Shapely_!
+* An OGR Example
+
+I find reading, writing, and creating vector datasets to be especially clunky and error prone to do directly via those bindings.  
+
+    from osgeo import ogr
+    
+    # Create ring
+    ring = ogr.Geometry(ogr.wkbLinearRing)
+    ring.AddPoint(1179091.1646903288, 712782.8838459781)
+    ring.AddPoint(1161053.0218226474, 667456.2684348812)
+    ring.AddPoint(1214704.933941905, 641092.8288590391)
+    ring.AddPoint(1228580.428455506, 682719.3123998424)
+    ring.AddPoint(1218405.0658121984, 721108.1805541387)
+    ring.AddPoint(1179091.1646903288, 712782.8838459781)
+    
+    # Create polygon
+    poly = ogr.Geometry(ogr.wkbPolygon)
+    poly.AddGeometry(ring)
+    
+    print poly.ExportToWkt()
+
+.caption From the [[http://pcjericks.github.io/py-gdalogr-cookbook/geometry.html#create-a-polygon][GDAL/OGR Cookbook]]
+
+* A More Pythonic Way
+
+GDAL and OGR are really powerful, but the bindings don't feel like idiomatic python. Fortunately for us, the open source community has come through with some excellent alternatives!
+
+- Sean Gillies [[sgillies.net]] is the lead author of many of the sweet Python GIS packages
+
+I've taken inspiration from a couple of talks 
+
+- [[http://sgillies.github.io/foss4g-2014-fiona-rasterio/#/][Fiona and Rasterio]] by Sean Gillies
+- [[https://github.com/pdxmele/python-geodata-bffs][Python + Geographic Data = BFFs]] by Mele Sax-Barnett
+
+There are lots of cool examples in them, you should check them out!
+
+* GeoJSON
+
+[[http://geojson.org/][GeoJSON]] is a schema for JSON for representing GIS vector data (typically composed of a coordinate system and projection plus the actual geometries)
+
+.code code/json_ex.json
