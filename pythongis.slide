@@ -152,3 +152,47 @@ There are lots of cool examples in them, you should check them out!
 [[http://geojson.org/][GeoJSON]] is a schema for JSON for representing GIS vector data (typically composed of a coordinate system and projection plus the actual geometries)
 
 .code code/json_ex.json
+
+* Fiona
+
+[[http://toblerity.org/fiona/manual.html][Fiona]] is a Cython wrapper around a subset of the OGR bindings
+
+- It handles reading and writing to some of the weird GIS formats (ESRI Shapefiles are ubiquitious)
+- Talks in a GeoJSON like format
+
+Very pythonic in its usage:
+     
+.code code/fiona_read.py
+
+    Geometry 0 is of type LineString
+    Geometry 1 is of type LineString
+    Geometry 2 is of type LineString
+    ...
+
+* Fiona
+
+Fiona fetches records as a GeoJSON like dictionary:
+
+    In [6]: pprint(rec)
+    {'geometry': {'coordinates': [(-122.67690464926368, 45.479812645666556),
+                                  (-122.67693994280965, 45.47586557979783)],
+                  'type': 'LineString'},
+     'id': '8',
+     'properties': OrderedDict([(u'id', None)]),
+     'type': 'Feature'}
+
+- This makes your life easy, simply pass the dict around to your own code
+
+All the information on the coordinate system, projection, and shapefile schema are there (crs conforms to how the [[http://trac.osgeo.org/proj/][PROJ.4]] library handles it, check out [[https://github.com/jswhit/pyproj][pyproj]] for a nice wrapper of that library)
+
+    In [9]: source.meta
+    Out[9]:
+    {'crs': {'init': u'epsg:4326'},
+     'driver': u'ESRI Shapefile',
+     'schema': {'geometry': 'LineString',
+      'properties': OrderedDict([(u'id', 'int:10')])}}
+
+* Fiona
+
+
+
