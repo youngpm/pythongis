@@ -157,7 +157,7 @@ There are lots of cool examples in them, you should check them out!
 
 [[http://toblerity.org/fiona/manual.html][Fiona]] is a Cython wrapper around a subset of the OGR bindings
 
-- It handles reading and writing to some of the weird GIS formats (ESRI Shapefiles are ubiquitious)
+- It handles reading and writing to some of the weird GIS formats (ESRI Shapefiles are ubiquitous)
 - Talks in a GeoJSON like format
 
 Very pythonic in its usage:
@@ -185,7 +185,7 @@ Fiona fetches records as a GeoJSON like dictionary:
 
 * Fiona
 
-All the information on the coordinate system, projection, and shapefile schema are there (the handling of the cordinate reference system and projection conforms to how the [[http://trac.osgeo.org/proj/][PROJ.4]] library handles it, check out [[https://github.com/jswhit/pyproj][pyproj]] for a nice wrapper of that library)
+All the information on the coordinate system, projection, and shapefile schema are there (the handling of the coordinate reference system and projection conforms to how the [[http://trac.osgeo.org/proj/][PROJ.4]] library handles it, check out [[https://github.com/jswhit/pyproj][pyproj]] for a nice wrapper of that library)
 
     In [9]: source.meta
     Out[9]:
@@ -252,11 +252,11 @@ The rasterization example we did with the GDAL/OGR bindings would look something
 
 * Powered by Python
 
-One project where we've used python extensively is in constructing seamless, tonally consistant, high resolution mosaics on a country sized scale
+One project where we've used python extensively is in constructing seamless, tonally consistent, high resolution mosaics on a country sized scale
 
 - A mosaic is composed of thousands of strips, each strip on the order of 20km x 100km in size at 0.5m resolution
 - We match the tones of all the strips, and create "smart" seamlines at the boundaries
-- Much of this processing is done in Python, and dropping to Cython when neccessary
+- Much of this processing is done in Python, and dropping to Cython when necessary
 
 * Powered by Python
 
@@ -312,15 +312,15 @@ One project where we've used python extensively is in constructing seamless, ton
 
 * Resources
 
-The tools avaiable for manipulating GIS data in Python are a real pleasure to use; there are a bunch more I haven't touch on, check out the previously mentioned talks for more pointers!
+The tools available for manipulating GIS data in Python are a real pleasure to use; there are a bunch more I haven't touch on, check out the previously mentioned talks for more pointers!
 
 Of particular note is [[http://www2.qgis.org/en/site/][QGIS]], a desktop application for viewing/manipulating vector and raster data.  It supports extensions via PyQT and is free!
 
 To get at free raster and vector data, check out:
 
-- USGS's [[http://earthexplorer.usgs.gov/][EarthExplorer]], has the entire Landsat archive plus a bunch of arial and satellite data for free
+- USGS's [[http://earthexplorer.usgs.gov/][EarthExplorer]], has the entire Landsat archive plus a bunch of aerial and satellite data for free
 - [[http://www.openstreetmap.org/][OpenStreetMap]]
-- There are many more sources out there, google away!
+- There are many more sources out there, Google away!
 
 
 
