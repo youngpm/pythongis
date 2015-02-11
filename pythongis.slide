@@ -97,7 +97,7 @@ For example, to rasterize a vector file, you could do this
 
 * What We are Rasterizing
 
-.image images/roads_vector.png_ 800
+.image images/roads_vector.png _ 800
 
 * The Result
 
