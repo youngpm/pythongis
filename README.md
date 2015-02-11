@@ -1,0 +1,1 @@
+Slides are viewable [here](http://go-talks.appspot.com/github.com/youngpm/pythongis/pythongis.slide#1)
